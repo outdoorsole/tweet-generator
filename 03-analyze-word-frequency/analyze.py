@@ -9,8 +9,8 @@
 # A frequency() function that takes a word and histogram argument and returns the number of times that word appears in a text. For example, when given the word "mystery" and the Holmes histogram, it will return the integer 20.
 
 def printBook():
-  f = open('the-three-fates.txt', 'r')
-  print(f)
+  file = open('the-three-fates.txt', 'r')
+  print(file.read())
 
 def histogram():
   # returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text
