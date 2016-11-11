@@ -1,3 +1,4 @@
+# Prints a random Monty Python quote. Will only be run as a script because all lines are always executed.
 import random
 
 quotes = ("It's just a flesh wound.",
