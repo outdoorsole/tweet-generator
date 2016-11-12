@@ -21,19 +21,14 @@ def random_index_generator(list):
   rand_index = random.randint(1, len(list) - 1)
   return rand_index
 
-if __name__ == '__main__':
-  word_list = sys_word_list()
-  print word_list
-
+def shuffle_words():
   # variable to store randomly selected indices.
   index = []
-  
   index = random_index_generator(word_list)
   print index
 
   word_list[0], word_list[index] = word_list[index], word_list[0]
   print word_list
-
 
   index = random_index_generator(word_list)
   print index
@@ -51,4 +46,9 @@ if __name__ == '__main__':
   print index
 
   word_list[3], word_list[index] = word_list[index], word_list[3]
+  print word_list
+
+
+if __name__ == '__main__':
+  word_list = sys_word_list()
   print word_list
