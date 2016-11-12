@@ -10,7 +10,7 @@ import random
 new_word_list = []
 
 # variable to store randomly selected indices.
-indices = []
+index = []
 
 # create a new list, which excludes first argument, filename.
 def sys_word_list():
@@ -27,3 +27,6 @@ def random_index_generator():
 if __name__ == '__main__':
   word_list = sys_word_list()
   print word_list
+
+  index = random_index_generator()
+  print index
