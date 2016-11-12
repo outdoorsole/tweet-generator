@@ -17,8 +17,8 @@ def sys_word_list():
   return new_word_list
 
 # pick a random number between 1 and last element of the arguments (excludes first argument, filename).
-def random_index_generator():
-  rand_index = random.randint(1, len(sys.argv) - 1)
+def random_index_generator(list):
+  rand_index = random.randint(1, len(list) - 1)
   return rand_index
 
 if __name__ == '__main__':
@@ -28,7 +28,7 @@ if __name__ == '__main__':
   # variable to store randomly selected indices.
   index = []
   
-  index = random_index_generator()
+  index = random_index_generator(word_list)
   print index
 
   word_list[0], word_list[index] = word_list[index], word_list[0]
