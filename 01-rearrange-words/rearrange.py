@@ -33,3 +33,22 @@ if __name__ == '__main__':
 
   word_list[0], word_list[index] = word_list[index], word_list[0]
   print word_list
+
+
+  index = random_index_generator(word_list)
+  print index
+
+  word_list[1], word_list[index] = word_list[index], word_list[1]
+  print word_list
+
+  index = random_index_generator(word_list)
+  print index
+
+  word_list[2], word_list[index] = word_list[index], word_list[2]
+  print word_list
+
+  index = random_index_generator(word_list)
+  print index
+
+  word_list[3], word_list[index] = word_list[index], word_list[3]
+  print word_list
