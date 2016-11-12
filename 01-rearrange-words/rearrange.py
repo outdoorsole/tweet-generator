@@ -6,14 +6,11 @@ import sys
 # module needed to use random number generators.
 import random
 
-# variable to store new shuffled list.
-new_word_list = []
-
-# variable to store randomly selected indices.
-index = []
-
 # create a new list, which excludes first argument, filename.
 def sys_word_list():
+  # variable to store new shuffled list.
+  new_word_list = []
+  
   for word in sys.argv:
     new_word_list.append(word)
   new_word_list.pop(0)
@@ -28,5 +25,11 @@ if __name__ == '__main__':
   word_list = sys_word_list()
   print word_list
 
+  # variable to store randomly selected indices.
+  index = []
+  
   index = random_index_generator()
   print index
+
+  word_list[0], word_list[index] = word_list[index], word_list[0]
+  print word_list
