@@ -14,15 +14,15 @@ indices = []
 
 # pick a random number between 1 and last element of the arguments (excludes first argument, filename).
 def random_sys_word_list():
-  rand_index = random.randint(1, len(sys.argv) - 1)
-  if rand_index in indices:
-    rand_index = random.randint(1, len(sys.argv) - 1)
-  else:
-    indices.append(rand_index)
-    new_word_list.append(sys.argv[rand_index])
-    print indices
-    # output random index of system command-line arguments between 1 and last element.
+  for word in sys.argv:
+    new_word_list.append(word)
+  new_word_list.pop(0)
   return new_word_list
+
+# pick a random number
+def random_index_generator():
+  rand_index = random.randint(1, len(sys.argv) - 1)
+  return rand_index
 
 if __name__ == '__main__':
   random_word_list = random_sys_word_list()
