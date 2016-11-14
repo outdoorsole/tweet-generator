@@ -12,6 +12,11 @@ def create_word_list():
 
   return(word_list)
 
+def get_word_count(word_list):
+  return len(word_list)
+
 if __name__ == '__main__':
   dictionary_list = create_word_list()
-  print(dictionary_list)
+  word_count = get_word_count(dictionary_list)
+  print dictionary_list
+  print 'Word count: ', word_count
