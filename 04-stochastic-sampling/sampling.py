@@ -24,9 +24,7 @@ def histogram(word_list):
     if word_tuple not in array_of_word_tuples:
       array_of_word_tuples.append(word_tuple)
   for word, token in array_of_word_tuples:
-    print token
     word_tokens += token
-    print "this: ", word_tokens
   return array_of_word_tuples, word_types, word_tokens
 
 def probability(list_of_tuples, word_tokens):
@@ -34,7 +32,6 @@ def probability(list_of_tuples, word_tokens):
   for word, token in list_of_tuples:
     print word, token, word_tokens
     word_probability = (float(token) / word_tokens)
-    print "word_probability ", word_probability
     word_list_probability.append((word, word_probability))
   return word_list_probability
 
