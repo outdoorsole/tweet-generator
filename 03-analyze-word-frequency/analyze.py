@@ -22,9 +22,16 @@ def generate_word_list():
 
 def histogram(word_list):
   # returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
+  print(word_list)
+  print word_list.count(word_list[3])
+
 
 def unique_words():
   print()
 
 def frequency():
   print()
+
+words = generate_word_list()
+histogram(words)
+print words
