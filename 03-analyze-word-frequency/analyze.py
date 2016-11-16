@@ -23,8 +23,13 @@ def generate_word_list():
 def histogram(word_list):
   # returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
   print(word_list)
-  print word_list.count(word_list[3])
-
+  array_of_word_tuples = []
+  for index, word in enumerate(word_list):
+    print word
+    print word_list.count(word_list[index])
+    word_tuple = (word, word_list.count(word_list[index]))
+    array_of_word_tuples.append(word_tuple)
+  print array_of_word_tuples
 
 def unique_words():
   print()
@@ -33,5 +38,5 @@ def frequency():
   print()
 
 words = generate_word_list()
-histogram(words)
-print words
+word_histogram = histogram(words)
+print word_histogram
