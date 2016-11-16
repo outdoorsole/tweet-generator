@@ -25,12 +25,11 @@ def histogram(word_list):
   print(word_list)
   array_of_word_tuples = []
   for index, word in enumerate(word_list):
-    print word
-    print word_list.count(word_list[index])
-    word_tuple = (word, word_list.count(word_list[index]))
+    word_occurence = word_list.count(word_list[index])
+    word_tuple = (word, word_occurence)
     if word_tuple not in array_of_word_tuples:
       array_of_word_tuples.append(word_tuple)
-  print array_of_word_tuples
+  return array_of_word_tuples
 
 def unique_words():
   print()
