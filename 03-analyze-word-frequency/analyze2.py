@@ -23,14 +23,22 @@ def sort_word_list(word_list):
   return sorted(word_list)
 
 def histogram(word_list):
-  print(word_list)
-  array_of_word_tuples = []
-  for index, word in enumerate(word_list):
-    word_occurence = word_list.count(word_list[index])
-    word_tuple = (word, word_occurence)
-    if word_tuple not in array_of_word_tuples:
-      array_of_word_tuples.append(word_tuple)
-  return array_of_word_tuples
+  print('word list: ', word_list)
+  word_tuples_list = []
+  count = 1
+
+  for index in range(len(word_list) - 1):
+    if word_list[index] == word_list[index + 1]:
+      count += 1
+    else:
+      word_tuple = (word_list[index], count)
+      word_tuples_list.append(word_tuple)
+      count = 1
+  if count > 1 or word_list[-1] != word_list[-2]:
+    word_tuple = (word_list[-1], count)
+    word_tuples_list.append(word_tuple)
+  print count
+  return word_tuples_list
 
 def unique_words(histogram):
   return None
@@ -41,5 +49,6 @@ def frequency(word, histogram):
 if __name__ == '__main__':
   words = generate_word_list()
   print words
-  # words_histogram = histogram(words)
-  print sort_word_list(words)
+  sorted_word_list = sort_word_list(words)
+  words_histogram = histogram(sorted_word_list)
+  print words_histogram
