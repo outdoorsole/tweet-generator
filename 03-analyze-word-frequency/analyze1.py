@@ -11,7 +11,7 @@
 def generate_word_list():
   lines_array = []
 
-  with open('the-three-fates.txt', 'r') as file:
+  with open('words.txt', 'r') as file:
     data = file.read().split('\n')
     
     for line in data:
