@@ -10,15 +10,27 @@
 
 def generate_word_list():
   # Create file object using the open() function to process the text file.
-  file = open('the-three-fates.txt')
-  # Read entire file into a single string.
-  text = file.read()
-  # Return a list of words from the string.
-  words_list = text.split()
-  return file, words_list
+  # Specify the context using the with statement. A file object is a context manager; the with statement uses the file as a manager. OS resources are released when Python files are closed.
+  with open('words.txt') as file:
+    # Read entire file into a single string.
+    text = file.read()
+    # Return a list of words from the string.
+    words_list = text.split()
+  return words_list
+
+def sort_word_list(word_list):
+  # return sorted(word_list, key = lambda x: x[0])
+  return sorted(word_list)
 
 def histogram(word_list):
-  return None
+  print(word_list)
+  array_of_word_tuples = []
+  for index, word in enumerate(word_list):
+    word_occurence = word_list.count(word_list[index])
+    word_tuple = (word, word_occurence)
+    if word_tuple not in array_of_word_tuples:
+      array_of_word_tuples.append(word_tuple)
+  return array_of_word_tuples
 
 def unique_words(histogram):
   return None
@@ -27,5 +39,7 @@ def frequency(word, histogram):
   return None
 
 if __name__ == '__main__':
-  all_words, words = generate_word_list()
+  words = generate_word_list()
   print words
+  # words_histogram = histogram(words)
+  print sort_word_list(words)
