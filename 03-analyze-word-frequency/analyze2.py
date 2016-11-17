@@ -11,7 +11,7 @@
 def generate_word_list():
   # Create file object using the open() function to process the text file.
   # Specify the context using the with statement. A file object is a context manager; the with statement uses the file as a manager. OS resources are released when Python files are closed.
-  with open('words.txt') as file:
+  with open('the-three-fates.txt') as file:
     # Read entire file into a single string.
     text = file.read()
     # Return a list of words from the string.
@@ -23,9 +23,12 @@ def sort_word_list(word_list):
   return sorted(word_list)
 
 def histogram(word_list):
-  print('word list: ', word_list)
   word_tuples_list = []
   count = 1
+  counter = 0
+
+  if len(word_list) <= 1:
+    return [(word_tuple, count) for word_tuple in word_list]
 
   for index in range(len(word_list) - 1):
     if word_list[index] == word_list[index + 1]:
@@ -34,10 +37,12 @@ def histogram(word_list):
       word_tuple = (word_list[index], count)
       word_tuples_list.append(word_tuple)
       count = 1
+    counter += 1
   if count > 1 or word_list[-1] != word_list[-2]:
     word_tuple = (word_list[-1], count)
     word_tuples_list.append(word_tuple)
   print count
+  print counter
   return word_tuples_list
 
 def unique_words(histogram):
