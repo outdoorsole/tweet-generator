@@ -1,31 +1,39 @@
 # Sampling.py: Function that takes a histogram (however you've structured yours) and returns a single word, at random. It should not yet take into account the distributions of the words.
 
 def generate_word_list():
-  lines_array = []
-
-  with open('words.txt', 'r') as file:
-    data = file.read().split('\n')
-    
-    for line in data:
-      words_list = line.split()
-      lines_array += words_list
-  print len(lines_array)
-  return lines_array
+  # Create file object using the open() function to process the text file.
+  # Specify the context using the with statement. A file object is a context manager; the with statement uses the file as a manager. OS resources are released when Python files are closed.
+  with open('the-three-fates.txt') as file:
+    # Read entire file into a single string.
+    text = file.read()
+    # Return a list of words from the string.
+    words_list = text.split()
+  return words_list
 
 def histogram(word_list):
   # returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
-  print(word_list)
-  word_types = 0
-  word_tokens = 0
-  array_of_word_tuples = []
-  for index, word in enumerate(word_list):
-    word_occurence = word_list.count(word_list[index])
-    word_tuple = (word, word_occurence)
-    if word_tuple not in array_of_word_tuples:
-      array_of_word_tuples.append(word_tuple)
-  for word, token in array_of_word_tuples:
-    word_tokens += token
-  return array_of_word_tuples, word_types, word_tokens
+  word_tuples_list = []
+  count = 1
+  counter = 0
+
+  if len(word_list) <= 1:
+    return [(word_tuple, count) for word_tuple in word_list]
+
+  for index in range(len(word_list) - 1):
+    if word_list[index] == word_list[index + 1]:
+      count += 1
+    else:
+      word_tuple = (word_list[index], count)
+      word_tuples_list.append(word_tuple)
+      count = 1
+    counter += 1
+  if count > 1 or word_list[-1] != word_list[-2]:
+    word_tuple = (word_list[-1], count)
+    word_tuples_list.append(word_tuple)
+  print count
+  print counter
+  return word_tuples_list
+
 
 def probability(list_of_tuples, word_tokens):
   word_list_probability = []
@@ -40,7 +48,8 @@ def random_word(word_list):
 
 if __name__ == '__main__':
   words = generate_word_list()
-  word_histogram, total_words, unique_words = histogram(words)
-  print word_histogram, total_words, unique_words
-  word_probability_array = probability(word_histogram, unique_words)
-  print word_probability_array
+  print words
+  # word_histogram, total_words, unique_words = histogram(words)
+  # print word_histogram, total_words, unique_words
+  # word_probability_array = probability(word_histogram, unique_words)
+  # print word_probability_array
