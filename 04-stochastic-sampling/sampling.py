@@ -66,11 +66,17 @@ def ranges(word_probability_list):
 
 if __name__ == '__main__':
   words = generate_word_list()
+  print 'original_word_list:', words
+
   sorted_word_list = sort_word_list(words)
   print 'sorted_word_list:', sorted_word_list
+
   words_histogram = histogram(sorted_word_list)
   print 'words_histogram:', words_histogram
+
   word_tokens = tokens(words_histogram)
+  print 'word_tokens:', word_tokens
+
   word_probability_list = probability(words_histogram, word_tokens)
   print 'word_probability_list:', word_probability_list
 
@@ -78,7 +84,7 @@ if __name__ == '__main__':
   print('random_number:', random_number)
 
   word_range = ranges(word_probability_list)
-  print(word_range)
+  print('word_range_list:', word_range)
 
   for word, range in word_range:
     if random_number <= range:
