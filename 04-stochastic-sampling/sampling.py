@@ -12,12 +12,13 @@ def generate_word_list():
     words_list = text.split()
   return words_list
 
+
 def sort_word_list(word_list):
-  # return sorted(word_list, key = lambda x: x[0])
   return sorted(word_list)
 
+
 def histogram(word_list):
-  # returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
+  # Returns a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
   word_tuples_list = []
   count = 1
   counter = 0
@@ -38,14 +39,6 @@ def histogram(word_list):
     word_tuples_list.append(word_tuple)
   return word_tuples_list
 
-# Types: total unique words
-# Tokens: total concrete particulars
-def probability(list_of_tuples, tokens):
-  word_list_probability = []
-  for word, count in list_of_tuples:
-    word_probability = (float(count) / tokens)
-    word_list_probability.append((word, word_probability))
-  return word_list_probability
 
 def tokens(list_of_tuples):
   tokens = 0
@@ -53,8 +46,17 @@ def tokens(list_of_tuples):
     tokens += count
   return tokens
 
-def random_float(word_probability_list):
-  return random.random()
+
+def probability(list_of_tuples, tokens):
+  # Types: total unique words
+  # Tokens: total concrete particulars
+  word_list_probability = []
+
+  for word, count in list_of_tuples:
+    word_probability = (float(count) / tokens)
+    word_list_probability.append((word, word_probability))
+  return word_list_probability
+
 
 def ranges(word_probability_list):
   word_range_list = []
@@ -63,6 +65,18 @@ def ranges(word_probability_list):
     max_value += probability
     word_range_list.append((word, max_value))
   return word_range_list
+
+
+def random_float(word_probability_list):
+  return random.random()
+
+
+def select_random_word(word_range_list, random_number):
+  for word, range in word_range_list:
+    if random_number <= range:
+      return word 
+
+
 
 if __name__ == '__main__':
   words = generate_word_list()
@@ -80,13 +94,11 @@ if __name__ == '__main__':
   word_probability_list = probability(words_histogram, word_tokens)
   print 'word_probability_list:', word_probability_list
 
+  word_range_list = ranges(word_probability_list)
+  print 'word_range_list:', word_range_list
+
   random_number = random_float(word_probability_list)
-  print('random_number:', random_number)
+  print 'random_number:', random_number
 
-  word_range = ranges(word_probability_list)
-  print('word_range_list:', word_range)
-
-  for word, range in word_range:
-    if random_number <= range:
-      print(word)
-      break
+  randomly_generated_word = select_random_word(word_range_list, random_number)
+  print 'randomly_generated_word:', randomly_generated_word
