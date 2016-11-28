@@ -1,5 +1,7 @@
 # Sampling.py: Function that takes a histogram (however you've structured yours) and returns a single word, at random. It should not yet take into account the distributions of the words.
 
+import random
+
 def generate_word_list():
   # Create file object using the open() function to process the text file.
   # Specify the context using the with statement. A file object is a context manager; the with statement uses the file as a manager. OS resources are released when Python files are closed.
@@ -51,8 +53,16 @@ def tokens(list_of_tuples):
     tokens += count
   return tokens
 
-def random_word(word_list):
-  print 'random'
+def random_float(word_probability_list):
+  return random.random()
+
+def ranges(word_probability_list):
+  word_range_list = []
+  max_value = 0
+  for word, probability in word_probability_list:
+    max_value += probability
+    word_range_list.append((word, max_value))
+  return word_range_list
 
 if __name__ == '__main__':
   words = generate_word_list()
@@ -63,3 +73,14 @@ if __name__ == '__main__':
   word_tokens = tokens(words_histogram)
   word_probability_list = probability(words_histogram, word_tokens)
   print 'word_probability_list:', word_probability_list
+
+  random_number = random_float(word_probability_list)
+  print('random_number:', random_number)
+
+  word_range = ranges(word_probability_list)
+  print(word_range)
+
+  for word, range in word_range:
+    if random_number <= range:
+      print(word)
+      break
