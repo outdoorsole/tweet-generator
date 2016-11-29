@@ -23,9 +23,11 @@ def histogram(word_list):
   count = 1
   counter = 0
 
+  # For empty lists or lists containing only one item:
   if len(word_list) <= 1:
     return [(word_tuple, count) for word_tuple in word_list]
 
+  # For lists containing more than one item:
   for index in range(len(word_list) - 1):
     if word_list[index] == word_list[index + 1]:
       count += 1
@@ -79,26 +81,17 @@ def select_random_word(word_range_list, random_number):
 
 
 if __name__ == '__main__':
+  # Construct histogram:
   words = generate_word_list()
-  print 'original_word_list:', words
-
   sorted_word_list = sort_word_list(words)
-  print 'sorted_word_list:', sorted_word_list
-
   words_histogram = histogram(sorted_word_list)
-  print 'words_histogram:', words_histogram
 
-  word_tokens = tokens(words_histogram)
-  print 'word_tokens:', word_tokens
-
+  # Generate probability and ranges for words:
+  word_tokens = tokens(words_histogram)  
   word_probability_list = probability(words_histogram, word_tokens)
-  print 'word_probability_list:', word_probability_list
-
   word_range_list = ranges(word_probability_list)
-  print 'word_range_list:', word_range_list
 
+  # Select a random word from list:
   random_number = random_float(word_probability_list)
-  print 'random_number:', random_number
-
   randomly_generated_word = select_random_word(word_range_list, random_number)
-  print 'randomly_generated_word:', randomly_generated_word
+  print randomly_generated_word
