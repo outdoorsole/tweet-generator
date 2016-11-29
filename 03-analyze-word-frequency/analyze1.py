@@ -11,8 +11,8 @@
 def generate_word_list():
   lines_array = []
 
-  with open('words.txt', 'r') as file:
-    data = file.read().split('\n')
+  with open('the-three-fates.txt', 'r') as file:
+    data = file.read().split()
     
     for line in data:
       words_list = line.split()
@@ -31,12 +31,19 @@ def histogram(word_list):
       array_of_word_tuples.append(word_tuple)
   return array_of_word_tuples
 
-def unique_words():
-  print()
+def unique_words(histogram):
+  return len(histogram)
 
-def frequency():
-  print()
+def frequency(word, histogram):
+  for unique_word, index in histogram:
+    if unique_word == word:
+      return index
+  return 0
 
 words = generate_word_list()
-word_histogram = histogram(words)
-print word_histogram
+print(words)
+# word_histogram = histogram(words)
+# word_types = unique_words(word_histogram)
+# print word_histogram
+# print 'unique words:', word_types
+# print frequency('nothing', word_histogram)
