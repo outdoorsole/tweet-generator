@@ -19,10 +19,21 @@ def output_file():
   # Contents of book with whitespace removed (at the end of the content).
   book_content = book_array[0].rstrip()
 
+  # Building an expression to target chapter titles
   p = re.compile(r'\n([A-Z ]+\.)\n')
+
+  # Replace chapter title with empty string.
   word_string = re.sub(p, "", book_content)
 
+  # Building an expression to target all words in book content.
+  q = re.compile(r'(\w+)')
+
+  # Replace non-word characters with white space.
+  new_word_string = re.findall(q, word_string)
+  print new_word_string
+
+  # Write the words into a new file.
   with open('test.txt', 'w') as new_file:
-    new_file.write(word_string)
+    new_file.write(str(new_word_string))
 
 output_file()
