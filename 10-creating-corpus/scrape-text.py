@@ -7,14 +7,21 @@ def output_file():
   book_string = file.read()
   file.close()
   
-  word_list = re.split('(\W+)', book_string)
-  
-  new_file = open('test.txt', 'a')
-  for word in word_list:
-    print word
-    new_file.write(word)
+  word_string = re.sub('(\W+)', " ", book_string, )
+  pattern = re.compile('(\w+?!.)', book_string)
+  print pattern.group(1)
 
+  # word_list = word_string.split(" ")
   # print word_list
+
+
+  # new_file = open('test.txt', 'a')
+  # new_word_list = []
+  # for word in word_list:
+  #   new_file.write(word)
+  #   new_word_list.append(word)
+
+  # print new_word_list
 
 
   # new_sentence_list = []
