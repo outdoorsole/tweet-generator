@@ -19,6 +19,10 @@ def output_file():
   # Contents of book with whitespace removed (at the end of the content).
   book_content = book_array[0].rstrip()
 
+  p = re.compile('\n([A-Z ]+\.)\n')
+  result = p.findall(book_content)
+  print result
+
   with open('test.txt', 'w') as new_file:
     new_file.write(book_content)
 
