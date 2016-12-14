@@ -29,7 +29,9 @@ def output_file():
   q = re.compile(r'(\w+)')
 
   # Replace non-word characters with white space.
-  new_word_string = re.findall(q, word_string)
+  new_word_list = re.findall(q, word_string)
+
+  new_word_string = ' '.join(new_word_list)
   print new_word_string
 
   # Write the words into a new file.
